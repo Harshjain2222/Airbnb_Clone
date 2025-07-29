@@ -86,6 +86,9 @@ async function main() {
 //     console.log("Hii Im root")
 //     res.send("Hii i m root")
 // })
+app.get("/", (req, res) => {
+  res.redirect("/listing");
+});
 
 // app.get("/testList",(req,res)=>{
 //     const sampleList = new Listing({
