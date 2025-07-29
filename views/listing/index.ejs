@@ -1,0 +1,102 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head> -->    
+<!-- // We are cpmmenting this part here we are using boilerplate code by ejsmate -->
+
+
+<%- layout('/layouts/boilerplate') %>
+<body> 
+    <h2>Showing all listing</h2>
+    <!-- <form method="get" action="/listing/new">
+        <button>New listing</button>
+    </form>  // KYOKI APN NE NAVBAR ME HI EK OPTION BNAA LIYA TO NO NEED OF BUTTON -->
+
+    <!-- <style>
+        .filters{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .filter{
+            text-align: center;
+            margin-right: 2rem;
+            margin-top: 1rem;
+            opacity: 0.5;
+        }
+        .filter:hover{
+            opacity: 1;
+        }
+        .filter p{
+            font-size: 0.8rem;
+        }
+    </style> -->
+
+    <!-- Card-------------- -->
+     <!-- <div class="filters">
+        <div class="filter">
+            <div><i class="fa-solid fa-fire"></i></div>
+            <p>Trending</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-bed"></i></div>
+            <p>Room</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-mountain-city"></i></div>
+            <p>Iconic Cities</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-mountain"></i></div>
+            <p>Mountain</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-brands fa-fort-awesome"></i></div>
+            <p>Castles</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-person-swimming"></i></div>
+            <p>Amazing Pool</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-snowflake"></i></div>
+            <p>Arctic</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-cow"></i></div>
+            <p>Farm</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-campground"></i></div>
+            <p>Campaign</p>
+        </div> 
+     </div> -->
+
+    
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+        <% for(data of allListing){ %>
+            <a href="/listing/<%= data.id %>">
+        <div class="card cols" style="width: 20rem;">
+            <img src=" <%= data.image.url %>" class="card-img-top" alt="..." style="height: 20rem;">
+            <div class="card-img-overlay"></div>
+            <div class="card-body">
+               <b><p class="card-text"><%= data.title %></p></b>
+                <p>₹ <%= data.price.toLocaleString("en-IN") %>/night</p>
+            </div>
+        </div>
+        </a>
+        <% } %>
+    </div>
+        <!-- <ul>
+            <% for(data of allListing){ %>
+                <li>
+                    <a href="/listing/<%= data.id%>"> <%= data.title %></a> 
+                </li>
+            <% } %>
+        </ul> -->
+</body>
+
+
+<!-- </html> -->

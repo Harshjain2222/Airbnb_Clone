@@ -1,0 +1,121 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head> -->
+
+<%- layout('/layouts/boilerplate') %>
+<body>
+    <!-- <h3>Showing detail of this id: <%= data.id%></h3>
+
+    <div class="card" style="width: 18rem;">
+        <img src="<%= data.image.url %>" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text"><%= data.title %></p>
+        </div>
+    </div>
+
+    <ul>
+        <li>title: <%=data.title %></li>
+        <li>description: <%=data.description %></li>
+        <li>price: ₹ <%= data.price.toLocaleString("en-IN") %></li>
+        <li>country: <%=data.country %></li>
+        <li>location: <%=data.location %></li>
+    </ul>
+    <a href="/listing/<%= data.id %>/edit">Edit it</a>
+    <br>
+    <form method="post" action="/listing/<%=data.id%>?_method=DELETE">
+        <button>Delete</button>
+    </form> -->
+
+    <!-- After applying STYLE -->
+
+
+    <div class="container mt-5">
+    <h3 class="mb-4 text-center"><%= data.title %></h3>
+
+    <div class="card mx-auto" style="width: 24rem;">
+        <img src="<%= data.image.url %>" class="card-img-top rounded" alt="Listing Image" style="height: 200px; object-fit: cover;">
+        <div class="card-body"> 
+            <p><I> Owned by <b><%= data.owner.username %> </b></I></p>
+            <p class="card-text"><%= data.description %></p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Price: ₹ <%= data.price.toLocaleString("en-IN") %></li>
+                <li class="list-group-item">Country: <%= data.country %></li>
+                <li class="list-group-item">Location: <%= data.location %></li>
+            </ul>
+            
+            <div class="mt-3 d-flex justify-content-between">
+                <a href="/listing/<%= data.id %>/edit" class="btn btn-primary">Edit</a>
+                <form method="POST" action="/listing/<%= data.id %>?_method=DELETE">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <% if(currUser) { %>
+    <div class="col-8 offset-3 mb-3">
+        <hr>
+        <h4>Leave a review</h4>
+        <form action="/listing/<%=data.id%>/reviews" method="POST" novalidate class="needs-validation">
+            <div class="mb-3 mt-3">
+                <label for="rating" class="form-label" ><b>Rating</b></label> 
+                <fieldset class="starability-slot"> 
+                    <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0" checked aria-label="No rating." />
+                    <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                    <label for="first-rate1" title="Terrible">1 star</label>
+                    <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                    <label for="first-rate2" title="Not good">2 stars</label>
+                    <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                    <label for="first-rate3" title="Average">3 stars</label>
+                    <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                    <label for="first-rate4" title="Very good">4 stars</label>
+                    <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                    <label for="first-rate5" title="Amazing">5 stars</label>
+                </fieldset>
+                
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="comment" class="form-label">Comments</label>
+                <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+
+        <% } %>
+        <!-- <hr> -->
+        </div>
+        <div class="col-8 offset-3 mb-3">
+        <div class="card mt-3">
+        <div class="card-header">
+        <h5 class="mb-0">Reviews</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        <% for (let review of data.reviews) { %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <b> <i> @<%= review.author.username %> </b></i><br>
+                    <p class="starability-result" data-rating="<%= review.rating %>">
+                    Rated: 3 stars
+                    </p>
+                    <%= review.comment %><br> 
+                </div>
+                <form method="POST" action="/listing/<%=data._id%>/reviews/<%=review._id%>?_method=DELETE">
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </li>
+        <% } %>
+    </ul>
+</div>
+ 
+
+
+    </div>
+
+</div>
+
+</body>
+</html>

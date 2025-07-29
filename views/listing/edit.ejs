@@ -1,0 +1,65 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head> -->
+
+<%- layout('/layouts/boilerplate') %>
+<body>
+    <br> <br>
+    <h3>Editing</h3>
+    <form method="post" action="/listing/<%= data.id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div>
+            <label for="title" class="form-label">Title</label>
+            <input class="form-control" type="text" name="title" placeholder="Enter yuor title" value="<%= data.title%>" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div>
+            <label for="description" class="form-label">description</label>
+            <textarea name="description" class="form-control" required><%= data.description%></textarea>
+            <div class="invalid-feedback">
+                Please enter the short Description.
+            </div>
+        </div>
+        <!-- <div>
+            <label for="image" class="form-label">Image</label>
+            <input type="text"class="form-control" name="image" placeholder="Enter yuor image-url" value="<%= data.image.url%>">
+        </div> -->
+        <div>
+            <label for="image" class="form-label">Upload new file</label>
+            <input type="file"class="form-control" name="image" >
+        </div>
+        
+        <div class="row">
+        <div class="mb-3 col-md-4">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control"name="price" required placeholder="Enter yuor price" value="<%= data.price%>">
+            <div class="invalid-feedback">
+                Price should be valid!
+            </div>
+        </div>
+        
+        <div  class="mb-3 col-md-4">
+            <label for="location" class="form-label">Location</label>
+            <input type="text"class="form-control" name="location" required placeholder="Enter yuor location" value="<%= data.location%>">
+            <div class="invalid-feedback">
+                Location should to be valid!
+            </div>
+        </div>
+        </div>
+        <div>
+            <label for="country" class="form-label">country</label>
+            <input type="text"class="form-control" name="country" required placeholder="Enter yuor country" value="<%= data.country%>">
+            <div class="invalid-feedback">
+                Country should to be valid!
+            </div>
+        </div>
+        <br>
+        <button class="btn btn-dark">submit</button>
+    </form>
+</body>
+</html>
